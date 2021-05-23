@@ -2,7 +2,7 @@ import ormar
 from database import database, metadata
 
 
-class Status(ormar.Model):
+class Privilege(ormar.Model):
     class Meta:
         database = database
         metadata = metadata
