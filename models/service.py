@@ -5,6 +5,7 @@ from database import database, metadata
 
 class Service(ormar.Model):
     class Meta:
+        tablename = "service"
         database = database
         metadata = metadata
 

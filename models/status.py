@@ -4,6 +4,7 @@ from database import database, metadata
 
 class Status(ormar.Model):
     class Meta:
+        tablename = "status"
         database = database
         metadata = metadata
 

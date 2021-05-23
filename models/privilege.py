@@ -4,6 +4,7 @@ from database import database, metadata
 
 class Privilege(ormar.Model):
     class Meta:
+        tablename = "privilege"
         database = database
         metadata = metadata
 

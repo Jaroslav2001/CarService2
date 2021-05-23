@@ -5,6 +5,7 @@ from database import database, metadata
 
 class AutoParts(ormar.Model):
     class Meta:
+        tablename = "auto_parts"
         database = database
         metadata = metadata
 

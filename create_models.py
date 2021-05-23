@@ -11,10 +11,10 @@ async def with_connect(func):
 
 async def create():
     await Status.objects.bulk_create([
-        Status(name='Заказ автовапчасти'),
+        Status(name='Заказ автозапчасти'),
         Status(name='Ремот автомобиля'),
         Status(name='Отремонтирован'),
-        Status(name='Ищем ремонтника автомобиля'),
+        Status(name='Ищем ремонтника'),
         Status(name='Ждём автомобиль'),
         Status(name='Заказ выполнен')
     ])
