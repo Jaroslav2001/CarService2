@@ -1,6 +1,7 @@
 import sqlalchemy
 from database import metadata, DATABASE_URL, database
 from models import *
+from emun import PrivilegeEnum
 import asyncio
 
 
@@ -10,21 +11,8 @@ async def with_connect(func):
 
 
 async def create():
-    await Status.objects.bulk_create([
-        Status(name='Заказ автозапчасти'),
-        Status(name='Ремот автомобиля'),
-        Status(name='Отремонтирован'),
-        Status(name='Ищем ремонтника'),
-        Status(name='Ждём автомобиль'),
-        Status(name='Заказ выполнен')
-    ])
-
-    admin = await Privilege.objects.create(name='Администратор')
-    await Privilege.objects.create(name='Рабочий')
-    await Privilege.objects.create(name='Пользователь')
-
-    await Users.objects.create(
-        name=user, password=password, email=email, privilege=admin
+    await User.objects.create(
+        name=user, password=password, email=email, privilege=PrivilegeEnum.admin.value
     )
 
 

@@ -7,11 +7,11 @@ class UserFormPost(BaseModel):
     email: str
 
 
-class UserFormDelete(BaseModel):
+class UserForm(BaseModel):
     login: str
     password: str
 
 
-class UserFromPut(UserFormDelete):
+class UserFromPut(UserForm):
     new_password: str
     new_email: str

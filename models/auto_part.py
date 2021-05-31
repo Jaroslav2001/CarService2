@@ -1,13 +1,15 @@
 import ormar
+from decimal import Decimal
 from database import database, metadata
 
 
-class Status(ormar.Model):
+class AutoPart(ormar.Model):
     class Meta:
-        tablename = "status"
+        tablename = "auto_part"
         database = database
         metadata = metadata
 
     id: int = ormar.Integer(primary_key=True)
     name: str = ormar.String(max_length=200, unique=True, nullable=False)
-    description: str = ormar.Text(default='')
+    price: Decimal = ormar.Decimal(max_digits=11, decimal_places=2)
+    description: str = ormar.Text()

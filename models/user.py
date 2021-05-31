@@ -1,12 +1,12 @@
 import ormar
-import os
 from database import database, metadata
-from .privilege import Privilege
+from emun import PrivilegeEnum
+from setting import secret
 
 
-class Users(ormar.Model):
+class User(ormar.Model):
     class Meta:
-        tablename = "users"
+        tablename = "user"
         database = database
         metadata = metadata
 
@@ -15,8 +15,8 @@ class Users(ormar.Model):
     password: str = ormar.String(
         max_length=128,
         nullable=False,
-        encrypt_secret=os.urandom(20).hex(),
+        encrypt_secret=secret,
         encrypt_backend=ormar.EncryptBackends.HASH
     )
     email: str = ormar.String(max_length=100)
-    privilege: Privilege = ormar.ForeignKey(Privilege)
+    privilege: str = ormar.String(max_length=20, choices=list(PrivilegeEnum))
